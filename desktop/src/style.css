@@ -1,0 +1,354 @@
+.AvalancheBar {
+  border-radius: 0;
+  background: #2e3440; }
+
+.AvalancheBarEnd {
+  padding-bottom: 8px; }
+
+.AvalanchePanel {
+  font: 16px "Nunito"; }
+
+.AvalanchePanelBackdropScrim {
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: rgba(76, 86, 106, 0.25); }
+
+.AvalanchePanelBarScrim {
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: rgba(46, 52, 64, 0.75); }
+
+.AvalanchePanelContent {
+  background: #2e3440; }
+
+.AvalancheBarDashboard {
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  outline: none; }
+
+.AvalancheBarWorkspaces {
+  padding-top: 16px;
+  padding-bottom: 16px; }
+
+.AvalancheBarWorkspace {
+  min-width: 8px;
+  min-height: 8px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none; }
+  .AvalancheBarWorkspace.populated .AvalancheBarWorkspaceContent {
+    background: #7b88a1; }
+  .AvalancheBarWorkspace.active {
+    min-height: 24px; }
+  .AvalancheBarWorkspace.visible {
+    min-height: 24px; }
+    .AvalancheBarWorkspace.visible .AvalancheBarWorkspaceContent {
+      background: #5e81ac; }
+
+.AvalancheBarWorkspaceContent {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  background: #4c566a;
+  border-radius: 99999px; }
+
+.AvalancheBarTime {
+  font: 26px "Vina Sans";
+  margin-top: -4px; }
+  .AvalancheBarTime .AvalancheBarTimeMinutes {
+    margin-top: -10px; }
+
+.AvalancheBarNetwork {
+  font: 24px "Hack Nerd Font";
+  margin-right: 7px;
+  color: #eceff4; }
+  .AvalancheBarNetwork .wired.connected {
+    margin-right: -2px;
+    color: #eceff4; }
+  .AvalancheBarNetwork .wired.disconnected {
+    color: #bf616a; }
+  .AvalancheBarNetwork .wireless.strength-bad {
+    color: #bf616a; }
+  .AvalancheBarNetwork .wireless.strength-weak {
+    color: #d08770; }
+  .AvalancheBarNetwork .wireless.strength-good {
+    color: #ebcb8b; }
+  .AvalancheBarNetwork .wireless.strength-strong, .AvalancheBarNetwork .wireless.strength-excellent {
+    color: #eceff4; }
+  .AvalancheBarNetwork .wireless.disconnected {
+    color: #bf616a; }
+
+.AvalancheBarVolumeMicrophone {
+  font: 24px "Hack Nerd Font";
+  color: #eceff4; }
+  .AvalancheBarVolumeMicrophone .AvalancheBarVolumeIcon {
+    margin-left: 5px;
+    margin-right: 3px; }
+    .AvalancheBarVolumeMicrophone .AvalancheBarVolumeIcon.muted {
+      color: #bf616a;
+      margin-right: 7px; }
+
+.AvalancheBarVolumeSpeaker {
+  font: 24px "Hack Nerd Font";
+  color: #eceff4; }
+  .AvalancheBarVolumeSpeaker .AvalancheBarVolumeIcon {
+    margin-right: 7px; }
+    .AvalancheBarVolumeSpeaker .AvalancheBarVolumeIcon.muted {
+      color: #bf616a;
+      margin-right: 1px; }
+    .AvalancheBarVolumeSpeaker .AvalancheBarVolumeIcon.low {
+      margin-right: 1px; }
+    .AvalancheBarVolumeSpeaker .AvalancheBarVolumeIcon.medium {
+      margin-right: 1px;
+      margin-left: 4px; }
+    .AvalancheBarVolumeSpeaker .AvalancheBarVolumeIcon.high {
+      margin-right: 1px; }
+
+.AvalancheBarBluetooth {
+  font: 24px "Hack Nerd Font";
+  color: #eceff4; }
+  .AvalancheBarBluetooth .AvalancheBarBluetoothIcon.disabled {
+    color: #bf616a; }
+
+.AvalancheBarBattery {
+  font: 24px "Hack Nerd Font";
+  color: #eceff4; }
+  .AvalancheBarBattery .AvalancheBarBatteryIcon {
+    color: #eceff4;
+    background: transparent; }
+    .AvalancheBarBattery .AvalancheBarBatteryIcon.charging {
+      color: #a3be8c; }
+    .AvalancheBarBattery .AvalancheBarBatteryIcon.warning {
+      color: #d08770; }
+    .AvalancheBarBattery .AvalancheBarBatteryIcon.critical {
+      color: #bf616a; }
+
+.AvalanchePanelAppsSearch {
+  padding-left: 8px;
+  padding-right: 8px;
+  background: #3b4252; }
+
+.AvalanchePanelAppsSearchEntry {
+  font-size: 18px;
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  outline: none;
+  background: transparent; }
+
+.AvalanchePanelAppsSearchIcon {
+  padding-left: 8px;
+  padding-right: 16px;
+  font: 24px "Hack Nerd Font";
+  color: rgba(236, 239, 244, 0.75); }
+
+.AvalanchePanelApp {
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  background: #2e3440;
+  outline: none; }
+  .AvalanchePanelApp:hover {
+    background: #5e81ac; }
+  .AvalanchePanelApp:focus {
+    background: #5e81ac; }
+
+.AvalanchePanelAppsList {
+  padding: 8px 16px; }
+
+.AvalanchePanelAppIcon {
+  font-size: 36px; }
+  .AvalanchePanelAppIcon.text {
+    padding-left: 4px;
+    padding-right: 12px; }
+
+.AvalanchePanelAppName {
+  font-size: 16px; }
+
+.AvalanchePanelDashboardContent {
+  padding-top: 16px;
+  padding-bottom: 16px; }
+
+.AvalanchePanelDashboardItem {
+  border-radius: 10px;
+  background: #3b4252; }
+
+.AvalanchePanelDashboardItemStats.small .AvalanchePanelDashboardItemStatsCircularProgress {
+  min-width: 64px;
+  min-height: 64px;
+  font-size: 8px; }
+
+.AvalanchePanelDashboardItemStats.small .AvalanchePanelDashboardItemStatsCircularProgressLabel {
+  font-size: 26px; }
+
+.AvalanchePanelDashboardItemCalendar.small .AvalanchePanelDashboardItemCalendarContent, .AvalanchePanelDashboardItemCalendar.medium .AvalanchePanelDashboardItemCalendarContent {
+  padding-left: 24px; }
+
+.AvalanchePanelDashboardItemCalendar.small .AvalanchePanelDashboardItemCalendarDay, .AvalanchePanelDashboardItemCalendar.medium .AvalanchePanelDashboardItemCalendarDay {
+  font-size: 16px;
+  font-weight: bold;
+  color: #5e81ac; }
+
+.AvalanchePanelDashboardItemCalendar.small .AvalanchePanelDashboardItemCalendarDate, .AvalanchePanelDashboardItemCalendar.medium .AvalanchePanelDashboardItemCalendarDate {
+  font-size: 48px;
+  font-weight: bold;
+  margin-left: -4px; }
+
+.AvalanchePanelDashboardItemCalendar.large .AvalanchePanelDashboardItemCalendarHeader {
+  padding-top: 16px; }
+  .AvalanchePanelDashboardItemCalendar.large .AvalanchePanelDashboardItemCalendarHeader .AvalanchePanelDashboardItemCalendarHeaderLabel {
+    font-size: 24px;
+    font-weight: bold; }
+
+.AvalanchePanelDashboardItemCalendar.large .AvalanchePanelDashboardItemCalendarDay.previous {
+  color: #4c566a; }
+
+.AvalanchePanelDashboardItemCalendar.large .AvalanchePanelDashboardItemCalendarDay.next {
+  color: #4c566a; }
+
+.AvalanchePanelDashboardItemCalendar.large .AvalanchePanelDashboardItemCalendarDay.current {
+  color: #eceff4; }
+
+.AvalanchePanelDashboardItemCalendar.large .AvalanchePanelDashboardItemCalendarDay.today {
+  color: #eceff4;
+  font-weight: bold; }
+  .AvalanchePanelDashboardItemCalendar.large .AvalanchePanelDashboardItemCalendarDay.today .AvalanchePanelDashboardItemCalendarDayContent {
+    background: #5e81ac;
+    border-radius: 8px; }
+
+.AvalanchePanelDashboardItemNetwork.small .AvalanchePanelDashboardItemNetworkInfoOverlay.wired .AvalanchePanelDashboardItemNetworkInfoTitle {
+  margin-top: 16px;
+  margin-left: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #5e81ac; }
+
+.AvalanchePanelDashboardItemNetwork.small .AvalanchePanelDashboardItemNetworkInfoOverlay.wired .AvalanchePanelDashboardItemNetworkInfoIcon {
+  font-size: 48px;
+  min-width: 40px; }
+  .AvalanchePanelDashboardItemNetwork.small .AvalanchePanelDashboardItemNetworkInfoOverlay.wired .AvalanchePanelDashboardItemNetworkInfoIcon.connected {
+    color: #eceff4; }
+  .AvalanchePanelDashboardItemNetwork.small .AvalanchePanelDashboardItemNetworkInfoOverlay.wired .AvalanchePanelDashboardItemNetworkInfoIcon.disconnected {
+    color: #bf616a; }
+
+.AvalanchePanelDashboardItemNetwork.small .AvalanchePanelDashboardItemNetworkInfoOverlay.wired .AvalanchePanelDashboardItemNetworkInfoBody {
+  margin-top: 16px; }
+
+.AvalanchePanelDashboardItemNetwork.small .AvalanchePanelDashboardItemNetworkInfoOverlay.wireless .AvalanchePanelDashboardItemNetworkInfoTitle {
+  margin-top: 16px;
+  margin-left: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #5e81ac; }
+
+.AvalanchePanelDashboardItemNetwork.small .AvalanchePanelDashboardItemNetworkInfoOverlay.wireless .AvalanchePanelDashboardItemNetworkInfoIcon {
+  font-size: 48px;
+  min-width: 40px; }
+  .AvalanchePanelDashboardItemNetwork.small .AvalanchePanelDashboardItemNetworkInfoOverlay.wireless .AvalanchePanelDashboardItemNetworkInfoIcon.connected {
+    color: #eceff4; }
+  .AvalanchePanelDashboardItemNetwork.small .AvalanchePanelDashboardItemNetworkInfoOverlay.wireless .AvalanchePanelDashboardItemNetworkInfoIcon.disconnected {
+    color: #bf616a; }
+
+.AvalanchePanelDashboardItemNetwork.small .AvalanchePanelDashboardItemNetworkInfoOverlay.wireless .AvalanchePanelDashboardItemNetworkInfoBody {
+  margin-top: 16px; }
+
+.AvalanchePanelDashboardItemNetwork.small .AvalanchePanelDashboardItemNetworkInfoTitle {
+  font-size: 16px;
+  font-weight: bold;
+  color: #5e81ac; }
+
+.AvalanchePanelDashboardItemStatsContent {
+  padding-left: 8px;
+  padding-right: 8px; }
+
+.AvalanchePanelDashboardItemStatsCircularProgress {
+  min-width: 72px;
+  min-height: 72px;
+  font-size: 10px;
+  color: #eceff4; }
+  .AvalanchePanelDashboardItemStatsCircularProgress.high {
+    color: #bf616a; }
+  .AvalanchePanelDashboardItemStatsCircularProgress.ghost {
+    color: #4c566a; }
+
+.AvalanchePanelDashboardItemStatsCircularProgressLabel {
+  font-size: 32px;
+  color: #eceff4; }
+  .AvalanchePanelDashboardItemStatsCircularProgressLabel.cpu {
+    margin-left: -4px; }
+  .AvalanchePanelDashboardItemStatsCircularProgressLabel.memory {
+    margin-left: -4px; }
+  .AvalanchePanelDashboardItemStatsCircularProgressLabel.disk {
+    margin-left: 0px;
+    font-size: 28px; }
+  .AvalanchePanelDashboardItemStatsCircularProgressLabel.network {
+    margin-left: -6px;
+    font-size: 28px; }
+
+.AvalancheLauncher {
+  min-width: 100px;
+  min-height: 100px;
+  background: transparent; }
+
+.AvalancheNotificationsContent {
+  min-width: 1px;
+  min-height: 1px; }
+
+.AvalancheNotificationsList {
+  min-width: 1px;
+  min-height: 1px;
+  padding-bottom: 24px; }
+
+.AvalancheNotificationsListSpacer {
+  min-height: 1px; }
+
+.AvalancheNotificationItem {
+  min-width: 250px;
+  border-radius: 10px;
+  color: #eceff4;
+  background: #3b4252; }
+  .AvalancheNotificationItem.critical {
+    background: #ca775d; }
+    .AvalancheNotificationItem.critical .AvalancheNotificationItemIcon {
+      background: #d08770; }
+    .AvalancheNotificationItem.critical .AvalancheNotificationItemAction {
+      background: #d08770; }
+      .AvalancheNotificationItem.critical .AvalancheNotificationItemAction:hover {
+        background: #d69783; }
+
+.AvalancheNotificationItemContent {
+  padding: 16px; }
+
+.AvalancheNotificationItemIcon {
+  min-width: 64px;
+  min-height: 64px;
+  background: #4c566a;
+  border-radius: 10px; }
+
+.AvalancheNotificationItemText {
+  min-width: 350px; }
+
+.AvalancheNotificationItemTitle {
+  margin-top: -4px;
+  font-size: 24px;
+  font-weight: bold; }
+
+.AvalancheNotificationItemBody {
+  font-size: 16px;
+  margin: 0px;
+  padding: 0px; }
+
+.AvalancheNotificationItemAction {
+  outline: none;
+  border: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background: #434c5e;
+  font-weight: bold; }
+  .AvalancheNotificationItemAction:hover {
+    background: #4c566a; }
