@@ -9,7 +9,7 @@ const settings = Settings.load();
 
 Notifications.popupTimeout = 8_000;
 Notifications.cacheActions = false;
-Notifications.forceTimeout = false;
+Notifications.forceTimeout = true;
 
 export const create = ({ monitor }) => {
 	const list = Widget.Box({
