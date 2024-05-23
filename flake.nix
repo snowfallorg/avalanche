@@ -5,12 +5,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     snowfall-lib = {
-      url = "github:snowfallorg/lib/dev";
+      url = "github:snowfallorg/lib?ref=v3.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ags = {
-      url = "github:Aylur/ags";
+      url = "github:Aylur/ags?ref=v1.8.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
