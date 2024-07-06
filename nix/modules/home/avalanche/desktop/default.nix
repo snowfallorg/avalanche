@@ -1,9 +1,9 @@
-{
-  lib,
-  pkgs,
-  config,
-  ...
-}: let
+{ lib
+, pkgs
+, config
+, ...
+}:
+let
   cfg = config.snowfallorg.avalanche.desktop;
 
   inherit (lib.snowfallorg) colors;
@@ -22,23 +22,25 @@
     };
   };
 
-  render-binding = binding: action: let
-    modifiers = builtins.concatStringsSep " " binding.modifiers;
-  in "${modifiers}, ${binding.key}, ${action}";
+  render-binding = binding: action:
+    let
+      modifiers = builtins.concatStringsSep " " binding.modifiers;
+    in
+    "${modifiers}, ${binding.key}, ${action}";
 
-  format = pkgs.formats.json {};
+  format = pkgs.formats.json { };
 
   config-json = format.generate "desktop.json" cfg.settings;
 
   dynamic-wallpaper-configs =
     lib.snowfall.attrs.map-concat-attrs-to-list
-    (
-      name: monitor-config: ''
-        preload = ${monitor-config.wallpaper}
-        wallpaper = ${monitor-config.name}, ${monitor-config.wallpaper}
-      ''
-    )
-    cfg.monitors;
+      (
+        name: monitor-config: ''
+          preload = ${monitor-config.wallpaper}
+          wallpaper = ${monitor-config.name}, ${monitor-config.wallpaper}
+        ''
+      )
+      cfg.monitors;
 
   wallpaper-config =
     ''
@@ -48,16 +50,17 @@
 
   monitor-configs =
     lib.snowfall.attrs.map-concat-attrs-to-list
-    (
-      name: monitor-config: "${monitor-config.name}, ${monitor-config.resolution}, ${monitor-config.position}, ${monitor-config.scale}"
-    )
-    cfg.monitors;
-in {
+      (
+        name: monitor-config: "${monitor-config.name}, ${monitor-config.resolution}, ${monitor-config.position}, ${monitor-config.scale}"
+      )
+      cfg.monitors;
+in
+{
   options.snowfallorg.avalanche.desktop = {
     enable = lib.mkEnableOption "Avalanche Desktop";
 
     settings = lib.mkOption {
-      default = {};
+      default = { };
       description = "Avalanche Desktop settings";
 
       type = lib.types.submodule {
@@ -66,9 +69,9 @@ in {
     };
 
     monitors = lib.mkOption {
-      default = {};
+      default = { };
       description = "Avalanche Desktop monitors";
-      type = lib.types.attrsOf (lib.types.submodule ({name, ...}: {
+      type = lib.types.attrsOf (lib.types.submodule ({ name, ... }: {
         options = {
           enable = lib.mkOption {
             default = true;
@@ -103,7 +106,7 @@ in {
           wallpaper = lib.mkOption {
             default = pkgs.snowfallorg.avalanche-wallpapers.nord-rainbow-dark-nix;
             description = "Monitor wallpaper";
-            type = lib.types.oneOf [lib.types.str lib.types.path];
+            type = lib.types.oneOf [ lib.types.str lib.types.path ];
           };
 
           clamshell = lib.mkOption {
@@ -122,77 +125,77 @@ in {
       };
 
       session = {
-        exit = create-binding-option "exit hyprland" ["$mod" "SHIFT"] "q";
-        reload = create-binding-option "reload hyprland" ["$mod" "Control_L" "SHIFT"] "r";
+        exit = create-binding-option "exit hyprland" [ "$mod" "SHIFT" ] "q";
+        reload = create-binding-option "reload hyprland" [ "$mod" "Control_L" "SHIFT" ] "r";
       };
 
       shell = {
-        apps = create-binding-option "open apps" ["$mod"] "a";
-        dashboard = create-binding-option "open dashboard" ["$mod"] "d";
-        restart = create-binding-option "restart shell" ["$mod" "SHIFT"] "r";
+        apps = create-binding-option "open apps" [ "$mod" ] "a";
+        dashboard = create-binding-option "open dashboard" [ "$mod" ] "d";
+        restart = create-binding-option "restart shell" [ "$mod" "SHIFT" ] "r";
       };
 
       windows = {
-        open-terminal = create-binding-option "open terminal" ["$mod"] "t";
-        close = create-binding-option "close window" ["$mod"] "q";
-        float = create-binding-option "toggle floating" ["$mod"] "Space";
-        pin = create-binding-option "toggle pin" ["$mod"] "s";
-        fullscreen = create-binding-option "toggle fullscreen" ["$mod"] "f";
-        fake-fullscreen = create-binding-option "toggle fake fullscreen" ["$mod" "SHIFT"] "f";
+        open-terminal = create-binding-option "open terminal" [ "$mod" ] "t";
+        close = create-binding-option "close window" [ "$mod" ] "q";
+        float = create-binding-option "toggle floating" [ "$mod" ] "Space";
+        pin = create-binding-option "toggle pin" [ "$mod" ] "s";
+        fullscreen = create-binding-option "toggle fullscreen" [ "$mod" ] "f";
+        fake-fullscreen = create-binding-option "toggle fake fullscreen" [ "$mod" "SHIFT" ] "f";
 
         focus = {
-          left = create-binding-option "focus left" ["$mod"] "h";
-          up = create-binding-option "focus up" ["$mod"] "k";
-          down = create-binding-option "focus down" ["$mod"] "j";
-          right = create-binding-option "focus right" ["$mod"] "l";
+          left = create-binding-option "focus left" [ "$mod" ] "h";
+          up = create-binding-option "focus up" [ "$mod" ] "k";
+          down = create-binding-option "focus down" [ "$mod" ] "j";
+          right = create-binding-option "focus right" [ "$mod" ] "l";
         };
 
         move = {
-          left = create-binding-option "move left" ["$mod" "SHIFT"] "h";
-          up = create-binding-option "move up" ["$mod" "SHIFT"] "k";
-          down = create-binding-option "move down" ["$mod" "SHIFT"] "j";
-          right = create-binding-option "move right" ["$mod" "SHIFT"] "l";
+          left = create-binding-option "move left" [ "$mod" "SHIFT" ] "h";
+          up = create-binding-option "move up" [ "$mod" "SHIFT" ] "k";
+          down = create-binding-option "move down" [ "$mod" "SHIFT" ] "j";
+          right = create-binding-option "move right" [ "$mod" "SHIFT" ] "l";
         };
       };
 
       workspace = {
         switch = {
-          "1" = create-binding-option "switch to workspace 1" ["$mod"] "1";
-          "2" = create-binding-option "switch to workspace 2" ["$mod"] "2";
-          "3" = create-binding-option "switch to workspace 3" ["$mod"] "3";
-          "4" = create-binding-option "switch to workspace 4" ["$mod"] "4";
-          "5" = create-binding-option "switch to workspace 5" ["$mod"] "5";
-          "6" = create-binding-option "switch to workspace 6" ["$mod"] "6";
-          "7" = create-binding-option "switch to workspace 7" ["$mod"] "7";
-          "8" = create-binding-option "switch to workspace 8" ["$mod"] "8";
-          "9" = create-binding-option "switch to workspace 9" ["$mod"] "9";
-          "10" = create-binding-option "switch to workspace 10" ["$mod"] "0";
+          "1" = create-binding-option "switch to workspace 1" [ "$mod" ] "1";
+          "2" = create-binding-option "switch to workspace 2" [ "$mod" ] "2";
+          "3" = create-binding-option "switch to workspace 3" [ "$mod" ] "3";
+          "4" = create-binding-option "switch to workspace 4" [ "$mod" ] "4";
+          "5" = create-binding-option "switch to workspace 5" [ "$mod" ] "5";
+          "6" = create-binding-option "switch to workspace 6" [ "$mod" ] "6";
+          "7" = create-binding-option "switch to workspace 7" [ "$mod" ] "7";
+          "8" = create-binding-option "switch to workspace 8" [ "$mod" ] "8";
+          "9" = create-binding-option "switch to workspace 9" [ "$mod" ] "9";
+          "10" = create-binding-option "switch to workspace 10" [ "$mod" ] "0";
         };
 
         move = {
-          "1" = create-binding-option "move window to workspace 1" ["$mod" "SHIFT"] "1";
-          "2" = create-binding-option "move window to workspace 2" ["$mod" "SHIFT"] "2";
-          "3" = create-binding-option "move window to workspace 3" ["$mod" "SHIFT"] "3";
-          "4" = create-binding-option "move window to workspace 4" ["$mod" "SHIFT"] "4";
-          "5" = create-binding-option "move window to workspace 5" ["$mod" "SHIFT"] "5";
-          "6" = create-binding-option "move window to workspace 6" ["$mod" "SHIFT"] "6";
-          "7" = create-binding-option "move window to workspace 7" ["$mod" "SHIFT"] "7";
-          "8" = create-binding-option "move window to workspace 8" ["$mod" "SHIFT"] "8";
-          "9" = create-binding-option "move window to workspace 9" ["$mod" "SHIFT"] "9";
-          "10" = create-binding-option "move window to workspace 10" ["$mod" "SHIFT"] "0";
+          "1" = create-binding-option "move window to workspace 1" [ "$mod" "SHIFT" ] "1";
+          "2" = create-binding-option "move window to workspace 2" [ "$mod" "SHIFT" ] "2";
+          "3" = create-binding-option "move window to workspace 3" [ "$mod" "SHIFT" ] "3";
+          "4" = create-binding-option "move window to workspace 4" [ "$mod" "SHIFT" ] "4";
+          "5" = create-binding-option "move window to workspace 5" [ "$mod" "SHIFT" ] "5";
+          "6" = create-binding-option "move window to workspace 6" [ "$mod" "SHIFT" ] "6";
+          "7" = create-binding-option "move window to workspace 7" [ "$mod" "SHIFT" ] "7";
+          "8" = create-binding-option "move window to workspace 8" [ "$mod" "SHIFT" ] "8";
+          "9" = create-binding-option "move window to workspace 9" [ "$mod" "SHIFT" ] "9";
+          "10" = create-binding-option "move window to workspace 10" [ "$mod" "SHIFT" ] "0";
         };
 
         move-silent = {
-          "1" = create-binding-option "move window to workspace 1 silently" ["$mod" "Control_L" "SHIFT"] "1";
-          "2" = create-binding-option "move window to workspace 2 silently" ["$mod" "Control_L" "SHIFT"] "2";
-          "3" = create-binding-option "move window to workspace 3 silently" ["$mod" "Control_L" "SHIFT"] "3";
-          "4" = create-binding-option "move window to workspace 4 silently" ["$mod" "Control_L" "SHIFT"] "4";
-          "5" = create-binding-option "move window to workspace 5 silently" ["$mod" "Control_L" "SHIFT"] "5";
-          "6" = create-binding-option "move window to workspace 6 silently" ["$mod" "Control_L" "SHIFT"] "6";
-          "7" = create-binding-option "move window to workspace 7 silently" ["$mod" "Control_L" "SHIFT"] "7";
-          "8" = create-binding-option "move window to workspace 8 silently" ["$mod" "Control_L" "SHIFT"] "8";
-          "9" = create-binding-option "move window to workspace 9 silently" ["$mod" "Control_L" "SHIFT"] "9";
-          "10" = create-binding-option "move window to workspace 10 silently" ["$mod" "Control_L" "SHIFT"] "0";
+          "1" = create-binding-option "move window to workspace 1 silently" [ "$mod" "Control_L" "SHIFT" ] "1";
+          "2" = create-binding-option "move window to workspace 2 silently" [ "$mod" "Control_L" "SHIFT" ] "2";
+          "3" = create-binding-option "move window to workspace 3 silently" [ "$mod" "Control_L" "SHIFT" ] "3";
+          "4" = create-binding-option "move window to workspace 4 silently" [ "$mod" "Control_L" "SHIFT" ] "4";
+          "5" = create-binding-option "move window to workspace 5 silently" [ "$mod" "Control_L" "SHIFT" ] "5";
+          "6" = create-binding-option "move window to workspace 6 silently" [ "$mod" "Control_L" "SHIFT" ] "6";
+          "7" = create-binding-option "move window to workspace 7 silently" [ "$mod" "Control_L" "SHIFT" ] "7";
+          "8" = create-binding-option "move window to workspace 8 silently" [ "$mod" "Control_L" "SHIFT" ] "8";
+          "9" = create-binding-option "move window to workspace 9 silently" [ "$mod" "Control_L" "SHIFT" ] "9";
+          "10" = create-binding-option "move window to workspace 10 silently" [ "$mod" "Control_L" "SHIFT" ] "0";
         };
       };
     };
@@ -269,7 +272,6 @@ in {
             "col.active_border" = lib.mkDefault "0xff${colors.without-hash colors.nord.nord10}";
             "col.inactive_border" = lib.mkDefault "0x00${colors.without-hash colors.nord.nord0}";
 
-            no_cursor_warps = lib.mkDefault true;
             gaps_out = lib.mkDefault 16;
           };
 
@@ -381,22 +383,23 @@ in {
             (render-binding cfg.bindings.workspace.move-silent."10" "movetoworkspacesilent, 10")
           ];
 
-          bindl = let
-            clamshell-monitors =
-              lib.filterAttrs
-              (key: value: value.clamshell)
-              cfg.monitors;
+          bindl =
+            let
+              clamshell-monitors =
+                lib.filterAttrs
+                  (key: value: value.clamshell)
+                  cfg.monitors;
 
-            clamshell-monitors-bindings =
-              lib.snowfall.attrs.map-concat-attrs-to-list
-              (
-                name: monitor-config: [
-                  '', switch:on:${cfg.switches.lid}, exec, hyprctl keyword monitor "${monitor-config.name}, disable"''
-                  '', switch:off:${cfg.switches.lid}, exec, hyprctl keyword monitor "${monitor-config.name}, ${monitor-config.resolution}, ${monitor-config.position}, ${monitor-config.scale}"''
-                ]
-              )
-              clamshell-monitors;
-          in
+              clamshell-monitors-bindings =
+                lib.snowfall.attrs.map-concat-attrs-to-list
+                  (
+                    name: monitor-config: [
+                      '', switch:on:${cfg.switches.lid}, exec, hyprctl keyword monitor "${monitor-config.name}, disable"''
+                      '', switch:off:${cfg.switches.lid}, exec, hyprctl keyword monitor "${monitor-config.name}, ${monitor-config.resolution}, ${monitor-config.position}, ${monitor-config.scale}"''
+                    ]
+                  )
+                  clamshell-monitors;
+            in
             clamshell-monitors-bindings;
         };
       };
@@ -410,7 +413,7 @@ in {
       hyprpaper = {
         Unit = {
           Description = "Hyprland wallpaper daemon";
-          PartOf = ["graphical-session.target"];
+          PartOf = [ "graphical-session.target" ];
         };
 
         Service = {
@@ -419,7 +422,7 @@ in {
         };
 
         Install = {
-          WantedBy = ["graphical-session.target"];
+          WantedBy = [ "graphical-session.target" ];
         };
       };
     };
